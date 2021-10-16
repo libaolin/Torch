@@ -2,6 +2,20 @@ plugins {
     id 'com.android.application'
 }
 
+task init {
+    File dir = new File("${projectDir}/build/src/main")
+    if (!dir.exists()) {
+        dir.mkdirs()
+    }
+    File manifest = new File("${projectDir}/build/src/main/AndroidManifest.xml")
+    if (!manifest.exists()) {
+        manifest.createNewFile()
+    }
+    File input = new File("${projectDir}/src/main/AndroidManifest.xml")
+    def updatedContent = input.getText('UTF-8').replace("android:sharedUserId=\"android.uid.system\"", "")
+    manifest.write(updatedContent, 'UTF-8')
+}
+
 android {
     compileSdk 30
 
@@ -24,6 +38,16 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'build/src/main/AndroidManifest.xml'
+        }
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Torch.apk"
+        }
     }
 }
 

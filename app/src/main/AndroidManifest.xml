@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.darkwood.torch">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.darkwood.torch"
+    android:sharedUserId="android.uid.system">
+
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="true" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@drawable/ic_launcher_torch"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Torch">
         <activity
             android:name=".TorchActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|mcc|mnc|locale|touchscreen|keyboard|navigation|fontScale"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
