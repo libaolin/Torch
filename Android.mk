@@ -22,6 +22,6 @@ LOCAL_SRC_FILES := \
 LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/app/src/main/res
 
-LOCAL_MANIFEST_FILE := $(LOCAL_PATH)/app/src/main/AndroidManifest.xml
+LOCAL_MANIFEST_FILE := app/src/main/AndroidManifest.xml
 
 include $(BUILD_PACKAGE)
