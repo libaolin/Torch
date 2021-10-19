@@ -21,7 +21,7 @@
         <activity
             android:name=".TorchActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|mcc|mnc|locale|touchscreen|keyboard|navigation|fontScale"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
